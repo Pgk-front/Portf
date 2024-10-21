@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Quadrados</title>
+    <style>
+        .quadrado {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer; /* Muda o cursor para indicar que é clicável */
+        }
+        .escolhido {
+            background-color: red; /* Cor do quadrado escolhido */
+        }
+    </style>
+</head>
+<body>
+    <h1>Criar 20 Quadrados</h1>
+    <div id="container"></div> <!-- Contêiner para os quadrados -->
+
+    <script>
+        pontosdetentativas = 0
+        const container = document.getElementById('container');
+
+        // Criar 20 quadrados
+        for(let i = 0; i < 20; i++) {
+            const caixinhas = document.createElement("div");
+            caixinhas.classList.add("quadrado");
+            container.appendChild(caixinhas);
+        }
+        var quadrados = document.querySelectorAll(".quadrado")
+        const indiceAleatorio = Math.floor(Math.random() * quadrados.length);
+        var quadradoEscolhido = quadrados[indiceAleatorio]
+
+        quadrados.forEach(quadrado => {
+    quadrado.addEventListener("click", () => {
+    if(quadradoEscolhido === quadrado) {
+        alert("acertou!")
+    } 
+    else {
+        alert("errou")
+        pontosdetentativas++
+        var tentativas = document.createElement("h1")
+        document.body.appendChild(tentativas)
+        tentativas.innerHTML = "Suas tentativas: " + pontosdetentativas
+    }
+    })
+        })
+    </script>
+</body>
+</html>
